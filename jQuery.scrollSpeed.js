@@ -1,14 +1,15 @@
 // Custom scrolling speed with jQuery
 // Source: github.com/ByNathan/jQuery.scrollSpeed
-// Version: 1.0.1
+// Version: 1.0.2
 
 (function($) {
     
-    jQuery.scrollSpeed = function(step, speed) {
+    jQuery.scrollSpeed = function(step, speed, easing) {
         
         var $document = $(document),
             $window = $(window),
             $body = $('html, body'),
+            option = easing || 'default',
             root = 0,
             scroll = false,
             scrollY,
@@ -43,7 +44,7 @@
             
                     scrollTop: root
                 
-                }, speed, 'default', function() {
+                }, speed, option, function() {
             
                     scroll = false;
                 
@@ -66,7 +67,7 @@
             
                     scrollLeft: root
                 
-                }, speed, 'default', function() {
+                }, speed, option, function() {
             
                     scroll = false;
                 
