@@ -1,5 +1,5 @@
 # jQuery.scrollSpeed
-Lightweight jQuery extension for modifying vertical scrolling speed in modern web browsers.
+Lightweight jQuery extension for modifying scrolling speed in modern web browsers. Supports vertical or horizontal scrolling direction.
 
 ## Installation
 Include the latest version of [jQuery](http://jquery.com/download) and `jQuery.scrollSpeed.js` in the `<head>` of your HTML document:
@@ -23,7 +23,14 @@ $(function() {
 – Safari ( Desktop )  
 – Internet Explorer ( Disabled for performance )  
 – Firefox  
-– Opera ( Not Tested )
+– Opera ( Not Tested )  
+
+## Release Notes
+**jQuery.scrollSpeed 1.0**   
+– Initial Release   
+**jQuery.scrollSpeed 1.0.1**      
+– Added support for horizontal scrolling   
+– Minor code cleanup
 
 ## Feedback
 If you discover any issues or have questions regarding usage, please send a message to [mail@bynathan.com](mailto:mail@bynathan.com) or find me on twitter [@ByNathan](http://twitter.com/ByNathan).

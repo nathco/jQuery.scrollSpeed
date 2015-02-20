@@ -1,58 +1,89 @@
 // Custom scrolling speed with jQuery
 // Source: github.com/ByNathan/jQuery.scrollSpeed
-// Version: 1.0
+// Version: 1.0.1
 
 (function($) {
     
     jQuery.scrollSpeed = function(step, speed) {
         
         var $document = $(document),
-        
             $window = $(window),
-            
             $body = $('html, body'),
-            
-            viewport = $window.height(),
-            
-            top = 0,
-            
-            scroll = false;
+            root = 0,
+            scroll = false,
+            scrollY,
+            scrollX,
+            view;
             
         if (window.navigator.msPointerEnabled)
         
             return false;
             
         $window.on('mousewheel DOMMouseScroll', function(e) {
-        
-            scroll = true;
             
-            if (e.originalEvent.wheelDeltaY < 0 || e.originalEvent.detail > 0)
+            var deltaY = e.originalEvent.wheelDeltaY,
+                detail = e.originalEvent.detail;
+                scrollY = $document.height() > $window.height();
+                scrollX = $document.width() > $window.width();
+                scroll = true;
             
-                top = (top + viewport) >= $document.height() ? top : top += step;
+            if (scrollY) {
                 
-            if (e.originalEvent.wheelDeltaY > 0 || e.originalEvent.detail < 0)
+                view = $window.height();
+                    
+                if (deltaY < 0 || detail > 0)
             
-                top = top <= 0 ? 0 : top -= step;
+                    root = (root + view) >= $document.height() ? root : root += step;
                 
-            $body.stop().animate({
+                if (deltaY > 0 || detail < 0)
             
-                scrollTop: top
+                    root = root <= 0 ? 0 : root -= step;
                 
-            }, speed, 'default', function() {
+                $body.stop().animate({
             
-                scroll = false;
+                    scrollTop: root
                 
-            });
+                }, speed, 'default', function() {
+            
+                    scroll = false;
+                
+                });
+            }
+            
+            if (scrollX) {
+                
+                view = $window.width();
+                    
+                if (deltaY < 0 || detail > 0)
+            
+                    root = (root + view) >= $document.width() ? root : root += step;
+                
+                if (deltaY > 0 || detail < 0)
+            
+                    root = root <= 0 ? 0 : root -= step;
+                
+                $body.stop().animate({
+            
+                    scrollLeft: root
+                
+                }, speed, 'default', function() {
+            
+                    scroll = false;
+                
+                });
+            }
             
             return false;
             
         }).on('scroll', function() {
-        
-            if (!scroll) top = $window.scrollTop();
+            
+            if (scrollY && !scroll) root = $window.scrollTop();
+            if (scrollX && !scroll) root = $window.scrollLeft();
             
         }).on('resize', function() {
             
-            viewport = $window.height();
+            if (scrollY && !scroll) view = $window.height();
+            if (scrollX && !scroll) view = $window.width();
             
         });       
     };
