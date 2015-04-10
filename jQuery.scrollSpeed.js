@@ -1,6 +1,7 @@
-// Custom scrolling speed with jQuery
-// Source: github.com/ByNathan/jQuery.scrollSpeed
-// Version: 1.0.2
+// Plugin: jQuery.scrollSpeed
+// Source: github.com/nathco/jQuery.scrollSpeed
+// Author: Nathan Rutzky
+// Update: 1.0.2
 
 (function($) {
     
