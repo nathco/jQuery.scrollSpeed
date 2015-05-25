@@ -1,7 +1,7 @@
 // Plugin: jQuery.scrollSpeed
-// Source: github.com/nathco/jQuery.scrollSpeed
-// Author: Nathan Rutzky
-// Update: 1.0.2
+// Source: github.com/mrtdeh/jQuery.scrollSpeed
+// Author: Morteza Dehghani
+// Update: 2.0.0
 
 (function($) {
     
@@ -17,14 +17,26 @@
             scrollX,
             view;
             
-        if (window.navigator.msPointerEnabled)
-        
-            return false;
             
+			var down,up;
+			
         $window.on('mousewheel DOMMouseScroll', function(e) {
-            
-            var deltaY = e.originalEvent.wheelDeltaY,
-                detail = e.originalEvent.detail;
+		
+            if(root==0) root = $(window).scrollTop(); 
+			
+            var evt = window.event || e ;
+			evt = evt.originalEvent ? evt.originalEvent : evt;              
+			var delta = evt.detail ? evt.detail*(-40) : evt.wheelDelta ;
+
+			if(delta > 0) {
+				up = true;
+				down = false;
+			}
+			else{
+				down = true;
+				up = false;
+			}
+			
                 scrollY = $document.height() > $window.height();
                 scrollX = $document.width() > $window.width();
                 scroll = true;
@@ -33,11 +45,11 @@
                 
                 view = $window.height();
                     
-                if (deltaY < 0 || detail > 0)
+                if (down)
             
                     root = (root + view) >= $document.height() ? root : root += step;
                 
-                if (deltaY > 0 || detail < 0)
+                if (up)
             
                     root = root <= 0 ? 0 : root -= step;
                 
@@ -56,11 +68,11 @@
                 
                 view = $window.width();
                     
-                if (deltaY < 0 || detail > 0)
+                if (down)
             
                     root = (root + view) >= $document.width() ? root : root += step;
                 
-                if (deltaY > 0 || detail < 0)
+                if (up)
             
                     root = root <= 0 ? 0 : root -= step;
                 
