@@ -25,7 +25,7 @@ $(function() {
 ## Browser Support
 – Google Chrome  
 – Safari ( Desktop )  
-– Internet Explorer
+– Internet Explorer  
 – Firefox  
 – Opera ( Not Tested )  
 
