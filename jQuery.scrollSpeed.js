@@ -22,11 +22,11 @@
             return false;
             
         $window.on('mousewheel DOMMouseScroll', function(e) {
-            
-            var deltaY = e.originalEvent.wheelDeltaY,
+
+            var deltaY = e.originalEvent.wheelDelta,
                 detail = e.originalEvent.detail;
-                scrollY = $document.height() > $window.height();
-                scrollX = $document.width() > $window.width();
+                scrollY = document.body.clientHeight > $window.height();
+                scrollX = document.body.clientWidth > $window.width();
                 scroll = true;
             
             if (scrollY) {
