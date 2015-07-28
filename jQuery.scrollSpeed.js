@@ -40,38 +40,53 @@
                 if (deltaY > 0 || detail < 0)
             
                     root = root <= 0 ? 0 : root -= step;
-                
-                $body.stop().animate({
-            
-                    scrollTop: root
-                
-                }, speed, option, function() {
-            
-                    scroll = false;
-                
-                });
+
+                if ($window.scrollTop() > root && deltaY < 0) {
+
+                    root = root + $window.scrollTop();
+
+                    $body.stop().animate({
+
+                        scrollTop: root
+
+                    }, speed, option, function() {
+
+                        scroll = false;
+
+                    });
+                } else {
+                    $body.stop().animate({
+
+                        scrollTop: root
+
+                    }, speed, option, function() {
+
+                        scroll = false;
+
+                    });
+                }
             }
-            
+
             if (scrollX) {
-                
+
                 view = $window.width();
-                    
+
                 if (deltaY < 0 || detail > 0)
-            
+
                     root = (root + view) >= $document.width() ? root : root += step;
-                
+
                 if (deltaY > 0 || detail < 0)
-            
+
                     root = root <= 0 ? 0 : root -= step;
-                
+
                 $body.stop().animate({
-            
+
                     scrollLeft: root
-                
+
                 }, speed, option, function() {
-            
+
                     scroll = false;
-                
+
                 });
             }
             
