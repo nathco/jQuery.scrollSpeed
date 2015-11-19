@@ -15,14 +15,18 @@
             scroll = false,
             scrollY,
             scrollX,
-            view;
+            view,
+            select = false;
             
         if (window.navigator.msPointerEnabled)
         
             return false;
-            
-        $window.on('mousewheel DOMMouseScroll', function(e) {
-            
+        $('select').on('keyup', function() { select = true; })
+            .on('mouseenter', 'option', function() { select = true; })
+            .on('mouseleave', function() { select = false; });
+        $window.on('mousewheel DOMMouseScroll MozMousePixelScroll', function(e) {
+            if (select)
+        		return;
             var deltaY = e.originalEvent.wheelDeltaY,
                 detail = e.originalEvent.detail;
                 scrollY = $document.height() > $window.height();
