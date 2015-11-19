@@ -23,7 +23,8 @@
             return false;
         $('select').on('keyup', function() { select = true; })
             .on('mouseenter', 'option', function() { select = true; })
-            .on('mouseleave', function() { select = false; });
+            .on('mouseleave', function() { select = false; })
+            .on('blur', function() { select = false; });
         $window.on('mousewheel DOMMouseScroll MozMousePixelScroll', function(e) {
             if (select)
         		return;
