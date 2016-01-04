@@ -25,7 +25,7 @@ $(function() {
 ## Browser Support
 – Google Chrome  
 – Safari ( Desktop )  
-– Internet Explorer ( Disabled for performance )  
+– Internet Explorer  
 – Firefox  
 – Opera ( Not Tested )  
 
@@ -37,6 +37,9 @@ $(function() {
 – Minor code cleanup  
 **jQuery.scrollSpeed 1.0.2**      
 – Added paramater for custom easing  
+**jQuery.scrollSpeed 2.0.0**      
+– Added support for Internet Explorer
+– Fix the jump problem
 
 ## Feedback
 If you discover any issues or have questions regarding usage, please send a message to [code@nath.co](mailto:code@nath.co) or find me on GitHub [@nathco](https://github.com/nathco).
