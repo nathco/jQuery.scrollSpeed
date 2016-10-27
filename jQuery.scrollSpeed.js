@@ -11,7 +11,7 @@
             $window = $(window),
             $body = $('html, body'),
             option = easing || 'default',
-            root = 0,
+            root = $(window).scrollTop() || 0,
             scroll = false,
             scrollY,
             scrollX,
